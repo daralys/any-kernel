@@ -214,7 +214,7 @@ do_devicecheck() {
   ui_print "Checking device...";
   device=$(getprop ro.product.device 2>/dev/null);
   product=$(getprop ro.build.product 2>/dev/null);
-  vendordevice=$(getprop ro.product.vendor.device 2>/dev/null);
+  vendordevice=$(getprop ro.product.vendour.device 2>/dev/null);
   vendorproduct=$(getprop ro.vendor.product.device 2>/dev/null);
   for testname in $(file_getprop anykernel.sh 'device.name.*'); do
     for devicename in $device $product $vendordevice $vendorproduct; do
@@ -412,6 +412,7 @@ if [ -f version ]; then
   ui_printfile version;
   ui_print " ";
 fi;
+ui_print " " "Kernel by daraly" " " " ";
 ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " " " ";
 
 setup_env;
@@ -420,7 +421,7 @@ do_devicecheck;
 do_versioncheck;
 do_levelcheck;
 
-ui_print "Installing...";
+ui_print "Burning your Decice🔥🔥...";
 CORE=$($BB grep -oE 'ak.*core.sh' anykernel.sh);
 test -f tools/$CORE || $BB ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
 PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel.sh $2;
@@ -437,4 +438,4 @@ if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
 
-ui_print " " " " "Done!";
+ui_print " " " " "Your Decice Has Been Burned😈!";
